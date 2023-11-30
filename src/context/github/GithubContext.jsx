@@ -23,33 +23,39 @@ export const GithubProvider = ({ children }) => {
       type: "SET_LOADING",
     });
 
-  /*
-  const fetchUsers = async () => {
-    setLoading();
+  //특정 단어로 유저 찾기
+  const searchUsers = async (text) => {
+    setLoading(); //로딩상태 true
+
+    //url 주소의 끝에 쿼리스트링을 만든다.(q=text)
+    const params = new URLSearchParams({
+      q: text,
+    });
+
     //onsole.log(`${import.meta.env.VITE_GITHUB_TOKEN}/users`);
-    const response = await fetch(`${GITHUB_URL}/users`, {
+    const response = await fetch(`${GITHUB_URL}/search/users?${params}`, {
       headers: {
         Authorization: `token ${GITHUB_TOKEN}`,
       },
     });
-    const data = await response.json();
+    const { items } = await response.json();
 
     // setUsers(data);
     // setLoading(false); // 데이터 로딩 완료(false)
 
     dispatch({
       type: "GET_USERS",
-      payload: data,
+      payload: items,
       loading: false,
     });
-  };*/
+  };
 
   return (
     <GithubContext.Provider
       value={{
         users: state.users,
         loading: state.loading,
-        // fetchUsers,
+        searchUsers,
       }}
     >
       {children}
