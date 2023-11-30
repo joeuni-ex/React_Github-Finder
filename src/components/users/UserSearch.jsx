@@ -3,7 +3,7 @@ import GithubContext from "../../context/github/GithubContext";
 
 const UserSearch = () => {
   const [text, setText] = useState(""); //검색어
-  const { users, searchUsers } = useContext(GithubContext);
+  const { users, searchUsers, clearUsers } = useContext(GithubContext);
 
   //검색어 저장
   const handleChange = (e) => {
@@ -50,7 +50,9 @@ const UserSearch = () => {
       </div>
       <div>
         {users.length > 0 && (
-          <button className="btn btn-ghost btn-lg">Clear</button>
+          <button onClick={clearUsers} className="btn btn-ghost btn-lg">
+            Clear
+          </button>
         )}
       </div>
     </div>

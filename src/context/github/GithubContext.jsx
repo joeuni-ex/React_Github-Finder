@@ -17,12 +17,6 @@ export const GithubProvider = ({ children }) => {
   //리듀서 사용
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
-  //로딩상태를 true로 업데이트하기 위한 dispatch
-  const setLoading = () =>
-    dispatch({
-      type: "SET_LOADING",
-    });
-
   //특정 단어로 유저 찾기
   const searchUsers = async (text) => {
     setLoading(); //로딩상태 true
@@ -49,6 +43,17 @@ export const GithubProvider = ({ children }) => {
       loading: false,
     });
   };
+  //로딩상태를 true로 업데이트하기 위한 dispatch
+  const setLoading = () =>
+    dispatch({
+      type: "SET_LOADING",
+    });
+
+  //검색 클리어
+  const clearUsers = () =>
+    dispatch({
+      type: "CLEAR_USERS",
+    });
 
   return (
     <GithubContext.Provider
@@ -56,6 +61,7 @@ export const GithubProvider = ({ children }) => {
         users: state.users,
         loading: state.loading,
         searchUsers,
+        clearUsers,
       }}
     >
       {children}
