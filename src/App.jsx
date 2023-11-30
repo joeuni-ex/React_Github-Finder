@@ -1,11 +1,18 @@
+import { BrowserRouter } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
-    <div className="bg-purple-500">
-      <h1 className="text-xl">헬로우 월드!</h1>
-      <button className="btn">클릭!</button>
-    </div>
+    <BrowserRouter>
+      <div className="flex flex-col justify-between h-screen">
+        <Navbar />
+
+        <main>Content</main>
+        <Footer />
+      </div>
+    </BrowserRouter>
   );
 }
 
