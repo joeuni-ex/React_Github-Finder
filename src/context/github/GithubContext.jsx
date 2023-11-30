@@ -23,6 +23,7 @@ export const GithubProvider = ({ children }) => {
       type: "SET_LOADING",
     });
 
+  /*
   const fetchUsers = async () => {
     setLoading();
     //onsole.log(`${import.meta.env.VITE_GITHUB_TOKEN}/users`);
@@ -41,14 +42,14 @@ export const GithubProvider = ({ children }) => {
       payload: data,
       loading: false,
     });
-  };
+  };*/
 
   return (
     <GithubContext.Provider
       value={{
         users: state.users,
         loading: state.loading,
-        fetchUsers,
+        // fetchUsers,
       }}
     >
       {children}

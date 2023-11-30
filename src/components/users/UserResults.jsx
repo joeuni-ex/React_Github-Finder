@@ -5,11 +5,12 @@ import GithubContext from "../../context/github/GithubContext";
 
 function UserResults() {
   //GithubContext에서 가져오기
-  const { users, loading, fetchUsers } = useContext(GithubContext);
+  const { users, loading } = useContext(GithubContext);
 
-  useEffect(() => {
-    fetchUsers();
-  }, []); //앱 시작시 실행됨
+  //테스트용 유저조회
+  // useEffect(() => {
+  //   fetchUsers();
+  // }, []); //앱 시작시 실행됨
 
   if (!loading) {
     return (
