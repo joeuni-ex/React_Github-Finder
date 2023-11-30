@@ -12,12 +12,19 @@ export const GithubProvider = ({ children }) => {
 
   const initialState = {
     users: [],
-    loading: true,
+    loading: false, //초기값
   };
   //리듀서 사용
   const [state, dispatch] = useReducer(githubReducer, initialState);
 
+  //로딩상태를 true로 업데이트하기 위한 dispatch
+  const setLoading = () =>
+    dispatch({
+      type: "SET_LOADING",
+    });
+
   const fetchUsers = async () => {
+    setLoading();
     //onsole.log(`${import.meta.env.VITE_GITHUB_TOKEN}/users`);
     const response = await fetch(`${GITHUB_URL}/users`, {
       headers: {
@@ -32,6 +39,7 @@ export const GithubProvider = ({ children }) => {
     dispatch({
       type: "GET_USERS",
       payload: data,
+      loading: false,
     });
   };
 
