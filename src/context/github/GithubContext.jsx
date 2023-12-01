@@ -13,6 +13,7 @@ export const GithubProvider = ({ children }) => {
   const initialState = {
     users: [],
     user: {},
+    repos: [],
     loading: false, //초기값
   };
   //리듀서 사용
@@ -45,7 +46,7 @@ export const GithubProvider = ({ children }) => {
     });
   };
 
-  //한명 유저 찾기
+  //한 명 유저 찾기
   const getUser = async (login) => {
     setLoading(); //로딩상태 true
 
@@ -68,6 +69,23 @@ export const GithubProvider = ({ children }) => {
     }
   };
 
+  //유저의 레포 가져오기
+  const getUserRepos = async (login) => {
+    setLoading(); //로딩상태 true
+
+    const response = await fetch(`${GITHUB_URL}/users/${login}/repos`, {
+      headers: {
+        Authorization: `token ${GITHUB_TOKEN}`,
+      },
+    });
+
+    const data = await response.json();
+    dispatch({
+      type: "GET_REPO",
+      payload: data,
+    });
+  };
+
   //로딩상태를 true로 업데이트하기 위한 dispatch
   const setLoading = () =>
     dispatch({
@@ -85,6 +103,7 @@ export const GithubProvider = ({ children }) => {
       value={{
         users: state.users,
         user: state.user,
+        repos: state.repos,
         loading: state.loading,
         searchUsers,
         clearUsers,
