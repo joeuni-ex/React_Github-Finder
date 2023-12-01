@@ -3,6 +3,7 @@ import GithubContext from "../../context/github/GithubContext";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "../layout/Spinner";
 import { FaCodepen, FaUserFriends, FaUsers } from "react-icons/fa";
+import RepoList from "../layout/RepoList";
 
 const User = () => {
   const { user, getUser, loading } = useContext(GithubContext);
@@ -145,6 +146,7 @@ const User = () => {
               </div>
             </div>
           </div>
+          <RepoList />
         </div>
       </>
     );
