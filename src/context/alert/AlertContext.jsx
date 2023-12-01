@@ -17,7 +17,7 @@ export const AlertProvider = ({ children }) => {
       payload: { msg: msg, type: type }, // {msg,type}으로 생략가능함
     });
 
-    setTimeout(() => dispatch({ type: " REMOVE_ALERT" }), 3000);
+    setTimeout(() => dispatch({ type: "REMOVE_ALERT" }), 3000);
   };
 
   return (
