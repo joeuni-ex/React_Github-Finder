@@ -73,11 +73,19 @@ export const GithubProvider = ({ children }) => {
   const getUserRepos = async (login) => {
     setLoading(); //로딩상태 true
 
-    const response = await fetch(`${GITHUB_URL}/users/${login}/repos`, {
-      headers: {
-        Authorization: `token ${GITHUB_TOKEN}`,
-      },
+    //최근 생성일자를 기준으로 10개 가져오기
+    const params = new URLSearchParams({
+      sort: "created",
+      per_page: 10,
     });
+    const response = await fetch(
+      `${GITHUB_URL}/users/${login}/repos?${params}`,
+      {
+        headers: {
+          Authorization: `token ${GITHUB_TOKEN}`,
+        },
+      }
+    );
 
     const data = await response.json();
     dispatch({
