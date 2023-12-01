@@ -6,7 +6,8 @@ import { FaCodepen, FaUserFriends, FaUsers } from "react-icons/fa";
 import RepoList from "../layout/RepoList";
 
 const User = () => {
-  const { user, getUser, loading } = useContext(GithubContext);
+  const { user, getUser, loading, repos, getUserRepos } =
+    useContext(GithubContext);
   //path파라미터로 유저 아이디가 넘어옴
   const params = useParams();
   //console.log(params);
@@ -14,6 +15,7 @@ const User = () => {
   //최초 1회 실행
   useEffect(() => {
     getUser(params.login);
+    getUserRepos(params.login);
   }, []);
 
   //유저 데이터 목록
@@ -146,7 +148,7 @@ const User = () => {
               </div>
             </div>
           </div>
-          <RepoList />
+          <RepoList repos={repos} />
         </div>
       </>
     );
