@@ -13,5 +13,5 @@
 ### 최근 업로드한 repository 10개 목록 출력
 ### ![image](https://github.com/joeuni-ex/React_Github-Finder/assets/141595215/05607113-09cd-4bee-b737-639d86021c5c)
 
-#### <Visit Github Profile> 버튼을 통해 원하는 유저의 깃허브 페이지로 이동 가능
+##### <Visit Github Profile> 버튼을 통해 원하는 유저의 깃허브 페이지로 이동 가능
 ### ![image](https://github.com/joeuni-ex/React_Github-Finder/assets/141595215/3d57becd-33d7-4f43-8a06-48d641e7f7bc)
