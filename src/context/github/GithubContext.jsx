@@ -81,7 +81,7 @@ export const GithubProvider = ({ children }) => {
 
     const data = await response.json();
     dispatch({
-      type: "GET_REPO",
+      type: "GET_REPOS",
       payload: data,
     });
   };
@@ -108,6 +108,7 @@ export const GithubProvider = ({ children }) => {
         searchUsers,
         clearUsers,
         getUser,
+        getUserRepos,
       }}
     >
       {children}
