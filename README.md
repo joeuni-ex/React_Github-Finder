@@ -19,4 +19,4 @@
 
 
 #### 배포 주소 
-- https://react-github-app-joeuni.netlify.app/users/joeuni-ex
+https://react-github-app-joeuni.netlify.app/
